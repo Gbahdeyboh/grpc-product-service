@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package productPackage;
+
+service Todo {
+    rpc createProduct (ProductItem) returns (ProductItem);
+    rpc readProduct (ProductId) returns (ProductItem);
+    rpc readProducts (Pagination) returns (ProductItems);
+    rpc updateProduct(ProductId) returns (ProductItem);
+    rpc deletePrduct (ProductId) returns (DeletePostResponse);
+}
+
+message ProductId {
+    string id = 1;
+}
+
+message Pagination {
+    int32 page = 1;
+    int32 perPage = 2;
+}
+
+enum CategoryList {
+    Smartphones = 0;
+    Cameras = 1;
+    Laptops = 2;
+    Headphones = 3;
+    Chargers = 4;
+    Speakers = 5;
+    Televisions = 6;
+    Modems = 7;
+    Kepyboards = 8;
+    Microphones = 9;
+}
+
+message ProductItem {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+    CategoryList category = 5;
+}
+
+message ProductItems {
+    repeated ProductItem products = 1;
+    Pagination pagination = 2;
+}
+
+message DeletePostResponse {
+    bool deleted = 1;
+}
