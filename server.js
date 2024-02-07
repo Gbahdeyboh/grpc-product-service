@@ -41,7 +41,7 @@ const products = [
 function createProduct(call, callback) {
     const data = call.request; 
 
-    const newProductData = { ...data, id: products.length + 1, new: false };
+    const newProductData = { ...data, id: products.length + 1 };
 
     products.push(newProductData);
 

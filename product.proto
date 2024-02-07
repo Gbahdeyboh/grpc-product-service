@@ -2,13 +2,14 @@ syntax = "proto3";
 
 package productPackage;
 
-service Todo {
+service Product {
     rpc createProduct (ProductItem) returns (ProductItem);
     rpc readProduct (ProductId) returns (ProductItem);
     rpc readProducts (voidParam) returns (ProductItems);
     rpc updateProduct(ProductItem) returns (ProductItem);
-    rpc deleteProduct (ProductId) returns (DeletePostResponse);
+    rpc deleteProduct (ProductId) returns (DeleteProductResponse);
 }
+
 
 message voidParam {}
 
@@ -40,14 +41,12 @@ message ProductItem {
     string description = 3;
     float price = 4;
     CategoryList category = 5;
-    bool new = 6;
 }
 
 message ProductItems {
     repeated ProductItem products = 1;
-    // Pagination pagination = 2;
 }
 
-message DeletePostResponse {
+message DeleteProductResponse {
     bool deleted = 1;
 }
