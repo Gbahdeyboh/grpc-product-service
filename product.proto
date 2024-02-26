@@ -1,38 +1,32 @@
 syntax = "proto3";
 
-package productPackage;
+package product;
 
 service Product {
-    rpc createProduct (ProductItem) returns (ProductItem);
-    rpc readProduct (ProductId) returns (ProductItem);
-    rpc readProducts (voidParam) returns (ProductItems);
-    rpc updateProduct(ProductItem) returns (ProductItem);
-    rpc deleteProduct (ProductId) returns (DeleteProductResponse);
+    rpc CreateProduct (ProductItem) returns (ProductItem);
+    rpc ReadProduct (ProductId) returns (ProductItem);
+    rpc ReadProducts (VoidParam) returns (ProductItems);
+    rpc UpdateProduct(ProductItem) returns (ProductItem);
+    rpc DeleteProduct (ProductId) returns (DeleteProductResponse);
 }
 
-
-message voidParam {}
+message VoidParam {}
 
 message ProductId {
     int32 id = 1;
 }
 
-message Pagination {
-    int32 page = 1;
-    int32 perPage = 2;
-}
-
-enum CategoryList {
-    Smartphones = 0;
-    Cameras = 1;
-    Laptops = 2;
-    Headphones = 3;
-    Chargers = 4;
-    Speakers = 5;
-    Televisions = 6;
-    Modems = 7;
-    Kepyboards = 8;
-    Microphones = 9;
+enum Category {
+    SMARTPHONE = 1;
+    CAMERA = 2;
+    LAPTOPS = 3;
+    HEADPHONES = 4;
+    CHARGERS = 5;
+    SPEAKERS = 6;
+    TELEVISIONS = 7;
+    MODEMS = 8;
+    KEYBOARDs = 9;
+    MICROPHONES = 10;
 }
 
 message ProductItem {
@@ -40,7 +34,7 @@ message ProductItem {
     string name = 2;
     string description = 3;
     float price = 4;
-    CategoryList category = 5;
+    Category category = 5;
 }
 
 message ProductItems {
@@ -50,3 +44,4 @@ message ProductItems {
 message DeleteProductResponse {
     bool deleted = 1;
 }
+
